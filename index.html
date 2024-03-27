@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CountryBool</title>
+  <style>
+    body {
+      background-color: lightgreen;
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    .post {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .post img {
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>CountryBool</h1>
+  <p>Welcome to the CountryBool imageboard!</p>
+  <p>Online Users: <span id="online-users">1</span></p>
+
+  <h2>Post a Countryball</h2>
+  <form id="post-form">
+    <label for="image">Image URL (Countryball related):</label>
+    <input type="url" id="image" name="image" required><br>
+    <label for="text">Text:</label>
+    <textarea id="text" name="text" rows="5" required></textarea><br>
+    <button type="submit">Post</button>
+  </form>
+
+  <div id="posts"></div>
+
+  <script>
+    // Simulate online users (replace with actual logic)
+    let onlineUsers = 1;
+
+    document.getElementById('online-users').textContent = onlineUsers;
+
+    const postForm = document.getElementById('post-form');
+    const postsElement = document.getElementById('posts');
+
+    postForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const imageUrl = document.getElementById('image').value;
+      const text = document.getElementById('text').value;
+
+      // Create a new post element
+      const post = document.createElement('div');
+      post.classList.add('post');
+
+      const postImg = document.createElement('img');
+      postImg.src = imageUrl;
+      post.appendChild(postImg);
+
+      const postText = document.createElement('p');
+      postText.textContent = text;
+      post.appendChild(postText);
+
+      // Add the post to the list
+      postsElement.appendChild(post);
+
+      // Clear the form
+      postForm.reset();
+    });
+  </script>
+</body>
+</html>
